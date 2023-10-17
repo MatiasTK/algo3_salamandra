@@ -1,0 +1,8 @@
+@startuml
+title "Iteraciones calculo de la contaminacion total"
+Salamandra -> Salamandra++: calcularContaminacionTotal()
+loop Para cada madera
+    Salamandra -> Madera: calcularContaminacion()
+    Madera --> Salamandra: total: double
+end
+@enduml

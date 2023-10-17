@@ -1,0 +1,8 @@
+@startuml
+title "Iteraciones calculo del costo de combustion"
+Salamandra -> Salamandra++: calcularKilosTotales()
+loop Para cada Madera
+Salamandra -> Madera: obtenerKilos()
+Madera --> Salamandra: kilo: int
+end
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+title test01calcularCombustionConTresTiposEsCorrecta
+actor TestCase
+
+create Salamandra
+TestCase -> Salamandra: Salamandra()
+create "q:Quebracho"
+TestCase -> "q:Quebracho": Quebracho(5)
+create "p:Pino"
+TestCase -> "p:Pino": Pino(1)
+create "r:Resina"
+TestCase -> "r:Resina": Resina(1)
+
+TestCase -> Salamandra: agregarMadera(q)
+TestCase -> Salamandra: agregarMadera(p)
+TestCase -> Salamandra: agregarMadera(r)
+TestCase -> Salamandra++: calcularCostoCombustionTotal()
+Salamandra -> "q:Quebracho": calcularCostoCombustion()
+"q:Quebracho" --> Salamandra: 1000 * 5
+Salamandra -> "p:Pino": calcularCostoCombustion()
+"p:Pino" --> Salamandra: 500 * 1
+Salamandra -> "r:Resina": calcularCostoCombustion()
+"r:Resina" --> Salamandra: 250 * 1
+Salamandra --> TestCase: costoTotal = 5750
+
+@enduml

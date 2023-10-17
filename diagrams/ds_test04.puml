@@ -1,0 +1,26 @@
+@startuml
+title test04CalculoLaContaminacionCorrecta
+actor TestCase
+
+create Salamandra
+TestCase -> Salamandra: Salamandra()
+create "q:Quebracho"
+TestCase -> "q:Quebracho": Quebracho(5)
+create "p:Pino"
+TestCase -> "p:Pino": Pino(1)
+create "r:Resina"
+TestCase -> "r:Resina": Resina(1)
+
+TestCase -> Salamandra: agregarMadera(q)
+TestCase -> Salamandra: agregarMadera(p)
+TestCase -> Salamandra: agregarMadera(r)
+TestCase -> Salamandra++: calcularContaminacionTotal()
+Salamandra -> "q:Quebracho": calcularContaminacion()
+"q:Quebracho" --> Salamandra: 5 * 5
+Salamandra -> "p:Pino": calcularContaminacion()
+"p:Pino" --> Salamandra: 150
+Salamandra -> "r:Resina": calcularContaminacion()
+"r:Resina" --> Salamandra: 5^1
+Salamandra --> TestCase: costoTotal = 180
+
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+
+class Salamandra{
+    - calcularKilosTotales(): int
+    + calcularContaminacionTotal(): double
+    + agregarMadera(madera: Madera)
+    + calcularCostoCombustionTotal(): int
+}
+
+interface Madera{
+    + calcularCostoCombustion()
+    + calcularCostoContaminacion()
+    + obtenerKilos()
+}
+
+class Quebracho{
+    - kilos: int
+    - precioBase: int
+    - contaminacionBase: int
+    + Quebracho(int kilos)
+    + calcularCostoCombustion(): int
+    + calcularCostoContaminacion(): double
+    + obtenerKilos(): int
+}
+
+class Pino{
+    - kilos: int
+    - precioBase: int
+    - contaminacionBase: int
+    + Pino(int kilos)
+    + calcularCostoCombustion(): int
+    + calcularCostoContaminacion(): double
+    + obtenerKilos(): int
+}
+
+class Resina {
+   - kilos: int
+   - precioBase: int
+   - contaminacionBase: int
+   + Resina(int kilos)
+   + calcularCostoCombustion(): int
+   + calcularCostoContaminacion(): double
+   + obtenerKilos(): int
+}
+
+exception CapacidadMaximaSuperada{}
+
+exception ContaminacionMaximaSuperada{}
+
+Salamandra "1" --> "0..*" Madera
+Madera <|.- Quebracho
+Madera <|.- Pino
+Madera <|.- Resina
+Salamandra .> ContaminacionMaximaSuperada
+CapacidadMaximaSuperada <. Salamandra
+
+@enduml

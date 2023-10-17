@@ -1,0 +1,17 @@
+@startuml
+title test02LaCantidadSuperaElMaximo
+actor TestCase
+
+create Salamandra
+TestCase -> Salamandra: Salamandra()
+create "q:Quebracho"
+TestCase -> "q:Quebracho": Quebracho(6)
+create "p:Pino"
+TestCase -> "p:Pino": Pino(5)
+
+
+TestCase -> Salamandra: agregarMadera(q)
+TestCase -> Salamandra++: agregarMadera(p)
+Salamandra -> Salamandra: calcularKilosTotales()
+Salamandra -> CapacidadMaximaSuperadaError: <<throws>>
+@enduml

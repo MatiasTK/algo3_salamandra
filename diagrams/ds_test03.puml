@@ -1,0 +1,19 @@
+@startuml
+title test03LaContaminacionSuperaElMaximo
+actor TestCase
+
+create Salamandra
+TestCase -> Salamandra: Salamandra()
+create "q:Quebracho"
+TestCase -> "q:Quebracho": Quebracho(2)
+create "p:Pino"
+TestCase -> "p:Pino": Pino(1)
+create "r:Resina"
+TestCase -> "r:Resina": Resina(5)
+
+TestCase -> Salamandra: agregarMadera(q)
+TestCase -> Salamandra: agregarMadera(p)
+TestCase -> Salamandra++: agregarMadera(r)
+Salamandra -> Salamandra: calcularContaminacionTotal()
+Salamandra -> ContaminacionSuperadaError: <<throws>>
+@enduml

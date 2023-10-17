@@ -1,0 +1,22 @@
+@startuml
+title Iteracciones de agregarMadera
+actor TestCase
+
+activate Salamandra
+TestCase -> Salamandra: agregarMadera
+Salamandra -> Salamandra: calcularKilosTotales
+activate Salamandra
+loop Para cada madera
+Salamandra -> Madera: obtenerKilos()
+Madera --> Salamandra: kilos:int
+end
+deactivate Salamandra
+Salamandra -> Salamandra: calcularContaminacionTotal
+activate Salamandra
+loop Para cada madera
+Salamandra -> Madera: calcularCostoContaminacion()
+Madera --> Salamandra: contaminacion:double
+end
+deactivate Salamandra
+Salamandra --> TestCase
+@enduml
